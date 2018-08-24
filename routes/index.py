@@ -37,7 +37,7 @@ def current_user():
 """
 
 
-@main.route("/bbs")
+@main.route("/")
 def index():
     u = current_user()
     return render_template("index.html", user=u)
