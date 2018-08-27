@@ -42,5 +42,5 @@ if __name__ == '__main__':
         host='0.0.0.0',
         port=2000,
     )
-    logging.basicConfig(filename='error.log', level=logging.DEBUG)
+    logging.basicConfig(filename='flask.log.txt', level=logging.DEBUG)
     app.run(**config)
