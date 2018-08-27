@@ -32,6 +32,8 @@ app.register_blueprint(reply_routes, url_prefix='/bbs/reply')
 app.register_blueprint(board_routes, url_prefix='/bbs/board')
 app.register_blueprint(mail_routes, url_prefix='/bbs/mail')
 
+# 增加日志
+logging.basicConfig(filename='flask.log.txt', level=logging.DEBUG)
 
 # 运行代码
 if __name__ == '__main__':
@@ -42,5 +44,5 @@ if __name__ == '__main__':
         host='0.0.0.0',
         port=2000,
     )
-    logging.basicConfig(filename='flask.log.txt', level=logging.DEBUG)
+
     app.run(**config)
