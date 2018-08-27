@@ -17,3 +17,4 @@
 *.nginx
 /data/*.txt
 *config.py
+error.log

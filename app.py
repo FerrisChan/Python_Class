@@ -1,6 +1,8 @@
 from flask import Flask
 
 import config
+import logging
+
 
 
 # web framework
@@ -10,7 +12,7 @@ app = Flask(__name__)
 # 设置 secret_key 来使用 flask 自带的 session
 # 这个字符串随便你设置什么内容都可以
 app.secret_key = config.secret_key
-
+app.debug = True
 
 """
 在 flask 中，模块化路由的功能由 蓝图（Blueprints）提供
@@ -40,4 +42,5 @@ if __name__ == '__main__':
         host='0.0.0.0',
         port=2000,
     )
+    logging.basicConfig(filename='error.log', level=logging.DEBUG)
     app.run(**config)
