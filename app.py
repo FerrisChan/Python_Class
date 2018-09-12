@@ -26,14 +26,18 @@ from routes.topic import main as topic_routes
 from routes.reply import main as reply_routes
 from routes.board import main as board_routes
 from routes.mail import main as mail_routes
-app.register_blueprint(index_routes,url_prefix='/bbs/')
-app.register_blueprint(topic_routes, url_prefix='/bbs/topic')
-app.register_blueprint(reply_routes, url_prefix='/bbs/reply')
-app.register_blueprint(board_routes, url_prefix='/bbs/board')
-app.register_blueprint(mail_routes, url_prefix='/bbs/mail')
+app.register_blueprint(index_routes,url_prefix='/')
+app.register_blueprint(topic_routes, url_prefix='/topic')
+app.register_blueprint(reply_routes, url_prefix='/reply')
+app.register_blueprint(board_routes, url_prefix='/board')
+app.register_blueprint(mail_routes, url_prefix='/mail')
 
 # 增加日志
 logging.basicConfig(filename='flask.log.txt', level=logging.DEBUG)
+gunicorn_error_logger = logging.getLogger('gunicorn.error')
+app.logger.handlers.extend(gunicorn_error_logger.handlers)
+app.logger.setLevel(logging.DEBUG)
+app.logger.debug('this will show in the log')
 
 # 运行代码
 if __name__ == '__main__':
